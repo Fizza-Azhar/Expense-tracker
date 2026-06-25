@@ -14,6 +14,19 @@ public class ExpensesController : ControllerBase
         return Ok(ExpenseStore.Expenses);
     }
 
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
+    {
+        var expense = ExpenseStore.Expenses.FirstOrDefault(e => e.Id == id);
+
+        if (expense == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(expense);
+    }
+
     [HttpPost]
     public IActionResult AddExpense([FromBody] Expense expense)
     {
@@ -33,6 +46,32 @@ public class ExpensesController : ControllerBase
         ExpenseStore.Expenses.Add(expense);
 
         return StatusCode(201, expense);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateExpense(int id, [FromBody] Expense updatedExpense)
+    {
+        var expense = ExpenseStore.Expenses.FirstOrDefault(e => e.Id == id);
+
+        if (expense == null)
+        {
+            return NotFound();
+        }
+
+        if (string.IsNullOrWhiteSpace(updatedExpense.Title))
+        {
+            return BadRequest(new { error = "Title cannot be empty" });
+        }
+
+        if (updatedExpense.Amount <= 0)
+        {
+            return BadRequest(new { error = "Amount must be greater than zero" });
+        }
+
+        expense.Title = updatedExpense.Title;
+        expense.Amount = updatedExpense.Amount;
+
+        return Ok(expense);
     }
 
     [HttpDelete("{id}")]
