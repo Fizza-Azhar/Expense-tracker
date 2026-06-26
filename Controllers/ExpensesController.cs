@@ -74,6 +74,28 @@ public class ExpensesController : ControllerBase
         return Ok(expense);
     }
 
+
+    [HttpGet("summary")]
+public IActionResult GetSummary()
+{
+    var totalAmount = ExpenseStore.Expenses.Sum(e => e.Amount);
+    var expenseCount = ExpenseStore.Expenses.Count;
+
+    var categoryBreakdown = ExpenseStore.Expenses
+        .GroupBy(e => e.Category)
+        .Select(g => new
+        {
+            Category = g.Key,
+            TotalAmount = g.Sum(e => e.Amount)
+        });
+
+    return Ok(new
+    {
+        TotalAmount = totalAmount,
+        ExpenseCount = expenseCount,
+        CategoryBreakdown = categoryBreakdown
+    });
+    }
     [HttpDelete("{id}")]
     public IActionResult DeleteExpense(int id)
     {

@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "2c62650e-8c40-4611-b6c1-3a07f350f82d",
+    "name": "Expense Tracker API",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56194958",
+    "_collection_link": "https://go.postman.co/collection/56194958-2c62650e-8c40-4611-b6c1-3a07f350f82d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All Expenses",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5078/api/Expenses",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5078",
+          "path": [
+            "api",
+            "Expenses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Expense By ID",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5078/api/Expenses/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5078",
+          "path": [
+            "api",
+            "Expenses",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Expense",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Lunch\",\r\n  \"amount\": 500,\r\n  \"category\": \"Food\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5078/api/Expenses",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5078",
+          "path": [
+            "api",
+            "Expenses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Expense",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Dinner\",\r\n  \"amount\": 700,\r\n  \"category\": \"Food\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5078/api/Expenses/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5078",
+          "path": [
+            "api",
+            "Expenses",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Expense",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5078/api/Expenses/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5078",
+          "path": [
+            "api",
+            "Expenses",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Summary",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5078/api/Expenses/summary",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5078",
+          "path": [
+            "api",
+            "Expenses",
+            "summary"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
